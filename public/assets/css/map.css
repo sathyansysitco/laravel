@@ -1,0 +1,41 @@
+#map {
+    height: 600px;
+    width: 65%;
+    float: left;border-radius:10px;
+}
+#list {
+    height: 600px;
+    width: 35%;
+    float: left;
+    overflow-y: auto;
+   
+}
+.place {
+    display: flex;
+    align-items: center;
+    width: 97%;
+    height: auto;
+    overflow: hidden;
+   margin-bottom:15px;
+    cursor: pointer;  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+transition: all 0.3s cubic-bezier(.25,.8,.25,1);border-radius:6px;
+}
+ .place h2{font-size:18px;}
+.place img {
+    width: 50%;
+    height: auto;
+}
+.place .info {
+    margin-left: 10px;
+}
+.place p{font-size:14px;}
+#location {
+    margin: 10px 0px;
+    display: block;
+    width: 33%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.gm-style-iw-chr{    float: left;display: inline-flex;
+position: absolute;right: 0px;top: 0px;font-size: 13px;}

@@ -1,0 +1,930 @@
+<?php 
+foreach ($productdetails as $p)
+{
+    $ec_prdct_id=$p['ec_prdct_id'];
+    $ec_vender_id=$p['ec_vender_id'];
+    $ec_prdct_item_name = json_decode($p['ec_prdct_item_name'], true);
+    $ec_prdct_item_name_english = $ec_prdct_item_name['English'];
+    $ec_prdct_item_name_arabic = (isset($ec_prdct_item_name['Arabic'])) ? $ec_prdct_item_name['Arabic'] : null;
+    $ec_prdct_barcode=$p['ec_prdct_barcode'];
+    $ec_prdct_short_dscptn = json_decode($p['ec_prdct_short_dscptn'], true);
+    $ec_prdct_short_dscptn_english = $ec_prdct_short_dscptn['English'];
+    $ec_prdct_short_dscptn_arabic = (isset($ec_prdct_short_dscptn['Arabic'])) ? $ec_prdct_short_dscptn['Arabic'] : null;
+    $ec_prdct_detailed_dscptn = json_decode($p['ec_prdct_detailed_dscptn'], true);
+    $ec_prdct_detailed_dscptn_english = (isset($ec_prdct_detailed_dscptn['English']) && $ec_prdct_detailed_dscptn['English'] !== null) ? $ec_prdct_detailed_dscptn['English'] : null;
+    $ec_prdct_detailed_dscptn_arabic = (isset($ec_prdct_detailed_dscptn['Arabic']) && $ec_prdct_detailed_dscptn['Arabic'] !== null) ? $ec_prdct_detailed_dscptn['Arabic'] : null;
+    $ec_prdct_features=$p['ec_prdct_features'];
+    $ec_prdct_meta_title=$p['ec_prdct_meta_title'];
+    $ec_prdct_meta_keyword=$p['ec_prdct_meta_keyword'];
+    $ec_prdct_meta_desc=$p['ec_prdct_meta_desc'];
+    $ec_prdct_tags=$p['ec_prdct_tags'];
+    $ec_prdct_seller=$p['ec_prdct_seller'];
+    $ec_prdct_store_stock=$p['ec_prdct_store_stock'];
+    $ec_prdct_stock_limit=$p['ec_prdct_stock_limit'];
+    $ec_prdct_category=$p['ec_prdct_category'];
+    $ec_prdct_subcategory=$p['ec_prdct_subcategory'];
+    $ec_prdct_sub_subcategory=$p['ec_prdct_sub_subcategory'];
+    $ec_prdct_sub_sub_subcategory=$p['ec_prdct_sub_sub_subcategory'];
+    $ec_prdct_priority=$p['ec_prdct_priority'];
+    $ec_prdct_brand=$p['ec_prdct_brand'];
+    $ec_prdct_featured_img=$p['ec_prdct_featured_img'];
+    $ec_prdct_multiple_img=$p['ec_prdct_multiple_img'];
+    $ec_prdct_delivery_days=$p['ec_prdct_delivery_days'];
+    $ec_prdct_return_days=$p['ec_prdct_return_days'];
+    $ec_prdct_sku=$p['ec_prdct_sku'];
+    $ec_prdct_payment_method=$p['ec_prdct_payment_method'];
+    $ec_prdct_selling_price=$p['ec_prdct_selling_price'];
+    $ec_prdct_offer_price=$p['ec_prdct_offer_price'];
+    $ec_prdct_purchase_price=$p['ec_prdct_purchase_price'];
+    $ec_product_stock=$p['ec_product_stock'];
+    $ec_product_stock_limit=$p['ec_product_stock_limit'];
+    $ec_prdct_deliverdby=$p['ec_prdct_deliverdby'];
+    $ec_prdct_country=$p['ec_prdct_country'];
+    $ec_prdct_filters=$p['ec_prdct_filters'];
+    $ec_prdct_save_later=$p['ec_prdct_save_later'];
+    $ec_prdct_draft_active=$p['ec_prdct_draft_active'];
+    $ec_prdct_best_seller=$p['ec_prdct_best_seller'];
+    $ec_prdct_featured=$p['ec_prdct_featured'];
+    $ec_prdct_status=$p['ec_prdct_status'];
+    $ec_prdct_delete=$p['ec_prdct_delete'];
+    $ec_prdct_created_at=$p['ec_prdct_created_at'];
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rawabi</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <!-- Custom styles -->
+    <link href="<?=base_url()?>assets/assets2/css/style.css" rel="stylesheet" />
+    <link href="<?=base_url()?>assets/assets2/css/icon.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-white border-bottom border-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="<?=base_url()?>/assets/media/dashlogo.svg" alt="Jawlati" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="search-title-area">
+                <h4 class="nav-title">Dashboard</h4>
+                <div class="input-search">
+                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <input type="search" name="" id="" placeholder="search" />
+                </div>
+            </div>
+            <div class="item-seperator">
+                <span></span>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown my-acc">
+                        <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <span class="user-img m-0"><img src="<?=base_url()?>assets/assets2/img/icons/notif.svg"
+                                    alt="" /></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown my-acc">
+                        <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <span class="user-name">Dianne Russell</span><span class="user-img"><img
+                                    src="assets/img/user/Avatar.png" alt="" /></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+
+    <div class="row overflow-hidden">
+        <div class="col-2">
+            <nav id="sidebar" class="d-md-block sidebar">
+                <ul class="nav flex-column">
+
+
+                    <li>
+                        <a href="#" class="active">
+                            <i class="icons administration"></i> Overview</a>
+                    </li>
+                    <li>
+                        <a href="<?=base_url()?>admin_productlist"> <i class="icons bookings"></i>Products</a>
+                    </li>
+                    <li>
+                        <a href="<?=base_url()?>admin_categorylist"> <i class="icons bookings"></i>Category</a>
+                    </li>
+                    <li>
+                        <a href="<?=base_url()?>admin_bannerlist"> <i class="icons clientmanagement"></i>Banner</a>
+                    </li>
+                </ul>
+                <div class="log-out">
+                    <a href="#" class="text-danger"> <i class="icons reports"></i>Log Out</a>
+                </div>
+            </nav>
+        </div>
+        <!-- Main content area -->
+
+        <main class="col-10 ">
+            <div class="page-body">
+                <?php if ($this->session->flashdata('success')): ?>
+                <div class="alert alert-success">
+                    <?php echo $this->session->flashdata('success'); ?>
+                </div>
+                <?php endif; ?>
+
+                <!-- Display flash error message -->
+                <?php if ($this->session->flashdata('error')): ?>
+                <div class="alert alert-danger">
+                    <?php echo $this->session->flashdata('error'); ?>
+                </div>
+                <?php endif; ?>
+
+                <form class="card add-pro" method="post" action="<?=base_url()?>admin_productupdate"
+                    enctype="multipart/form-data">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            Product Details
+                        </h3>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Product Name (English)
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_item_name_english; ?>"
+                                        name="ec_prdct_item_name_english" placeholder="Product Name English"
+                                        class=" form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Product Name (Arabic)
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_item_name_arabic; ?>"
+                                        name="ec_prdct_item_name_arabic" placeholder="Product Name Arabic"
+                                        class=" form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Barcode
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_barcode; ?>" name="ec_prdct_barcode"
+                                        placeholder="Barcode" class=" form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Short Description (English)
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_short_dscptn_english; ?>"
+                                        name="ec_prdct_short_dscptn_english" placeholder="Short Description English"
+                                        class=" form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Short Description (Arabic)
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_short_dscptn_arabic; ?>"
+                                        name="ec_prdct_short_dscptn_arabic" placeholder="Short Description Arabic"
+                                        class=" form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Detailed Description (English)
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <textarea name="ec_prdct_detailed_dscptn_english"
+                                        placeholder="Detailed Description English" class=" form-control"
+                                        required><?php echo $ec_prdct_detailed_dscptn_english; ?></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Detailed Description (Arabic)
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <textarea name="ec_prdct_detailed_dscptn_arabic"
+                                        placeholder="Detailed Description Arabic" class=" form-control"
+                                        required><?php echo $ec_prdct_detailed_dscptn_arabic; ?></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Features
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_features; ?>"
+                                        name="ec_prdct_features" placeholder="Features" class=" form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Meta Title
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_meta_title; ?>"
+                                        name="ec_prdct_meta_title" placeholder="Meta Title" class=" form-control"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Meta Keywords
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_meta_keyword; ?>"
+                                        name="ec_prdct_meta_keyword" placeholder="Meta Keywords" class=" form-control"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Meta Description
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <textarea name="ec_prdct_meta_desc" placeholder="Meta Description"
+                                        class=" form-control" required><?php echo $ec_prdct_meta_desc; ?></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Tags
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_tags; ?>" name="ec_prdct_tags"
+                                        placeholder="Tags" class=" form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Seller
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_seller; ?>" name="ec_prdct_seller"
+                                        placeholder="Seller" class=" form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Store Stock
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_store_stock; ?>"
+                                        name="ec_prdct_store_stock" placeholder="Store Stock" class=" form-control"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Stock Limit
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_stock_limit; ?>"
+                                        name="ec_prdct_stock_limit" placeholder="Stock Limit" class=" form-control"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Category
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_category; ?>"
+                                        name="ec_prdct_category" placeholder="Category" class=" form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Subcategory
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_subcategory; ?>"
+                                        name="ec_prdct_subcategory" placeholder="Subcategory" class=" form-control"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Sub Subcategory
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_sub_subcategory; ?>"
+                                        name="ec_prdct_sub_subcategory" placeholder="Subcategory" class=" form-control"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Sub Sub Subcategory
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_sub_sub_subcategory; ?>"
+                                        name="ec_prdct_sub_sub_subcategory" placeholder="Sub Sub Subcategory"
+                                        class=" form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Priority
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="number" value="<?php echo $ec_prdct_priority; ?>"
+                                        name="ec_prdct_priority" placeholder="Priority" class=" form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Brand
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <select name="ec_prdct_brand" class="form-select"
+                                        aria-label="Default select example" required>
+                                        <option value="">Select Brand</option>
+                                        <?php
+                        $get_all_brands = get_all_brands();
+                        foreach ($get_all_brands as $key => $value) {
+                          if($ec_prdct_brand==$value['brand_id']){
+                            echo "<option value='".$value['brand_id']."' selected>".$value['brand_name']."</option>";
+                          }
+                          else
+                          {
+                            echo "<option value='".$value['brand_id']."'>".$value['brand_name']."</option>";
+                          }
+                        }
+                    ?>
+                                    </select>
+                                </div>
+
+                            </div>
+
+
+                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                            <script>
+                                $(document).ready(function () {
+                                    // Add feature row
+                                    $("#add-feature").click(function () {
+                                        var featureRowHtml = $(".feature-row:first").clone(); // Clone the first feature row
+                                        featureRowHtml.find('.col-1').html('<button type="button" class="btn btn-danger remove-feature">Remove</button>'); // Add remove button to the cloned row
+                                        $(".features-container").append(featureRowHtml); // Append the cloned row to the container
+                                    });
+
+                                    // Remove feature row
+                                    $(document).on("click", ".remove-feature", function () {
+                                        $(this).closest(".feature-row").remove();
+                                    });
+                                });
+                            </script>
+
+                            <div class="modal" id="filtermodal">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Filters</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <form id="addfilter">
+                                                <div class="row">
+                                                    <div class="col-md-4" id="filters-list">
+
+
+                                                    </div>
+
+                                                    <div class="col-md-8" id="filter_listvariables">
+
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <button type="button" name="addfilter" id="addfilter"
+                                                            class="btn btn-primary"
+                                                            onclick="fetchCheckboxValues()">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                            <script>
+                                var siteUrl = "<?= base_url() ?>";
+
+
+
+                                function fetchCheckboxValues() {
+                                    // Get the filter title value
+                                    var filterTitle = $('input[name="filter_title"]:checked').map(function () {
+                                        return this.value;
+                                    }).get();
+                                    alert(filterTitle + "title")
+                                    // Get an array of selected variable values
+                                    var selectedValues = $('input[name="filter_variable"]:checked').map(function () {
+                                        return this.value;
+                                    }).get();
+                                    alert(selectedValues + "variables")
+                                    //  if (filterTitle.length === 1) {
+                                    //         // If only one filter title is selected, send that single title value
+                                    //         filterTitle = filterTitle[0];
+                                    //     } else {
+                                    //         // If multiple filter titles are selected, send all selected titles as an array
+                                    //         // You can adjust this logic according to your requirement
+                                    //         filterTitle = filterTitle.join(','); // Convert array to comma-separated string
+                                    //     }
+                                    // Send an AJAX request using jQuery's shorthand method $.post
+                                    $.post(siteUrl + 'ProductController/addFilter', {
+                                        filterTitle: filterTitle,
+                                        selectedValues: selectedValues
+                                    }, function (response) {
+                                        // Handle success response
+                                        console.log(response);
+                                        $('#filtermodal').modal('hide');
+
+                                        // After adding the filter, update the displayed filters
+                                        //displayFilters();
+                                    }).fail(function (xhr, status, error) {
+                                        // Handle error
+                                        console.error(xhr.responseText);
+                                    });
+                                }
+                                function fetchCheckboxValues8888888() {
+                                    // Get the item ID from the form
+                                    var itemId = $("#item_id").val();
+
+                                    // Get an array of selected filter titles
+                                    var filterTitles = $('input[name="filterTitle"]:checked').map(function () {
+                                        return $(this).val();
+                                    }).get();
+
+                                    // Get an array of selected variable values
+                                    var selectedValues = $('input[name="selectedValues"]:checked').map(function () {
+                                        return $(this).val();
+                                    }).get();
+
+                                    // Create an object to hold the data to be sent to the server
+                                    var postData = {
+                                        item_id: itemId,
+                                        filterTitle: filterTitles,
+                                        selectedValues: selectedValues
+                                    };
+
+                                    // Send an AJAX request to the server
+                                    $.ajax({
+                                        url: 'your_server_url_here',
+                                        type: 'POST',
+                                        data: postData,
+                                        success: function (response) {
+                                            // Handle success response from the server
+                                            console.log(response);
+                                        },
+                                        error: function (xhr, status, error) {
+                                            // Handle error response from the server
+                                            console.error(xhr.responseText);
+                                        }
+                                    });
+                                }
+
+                            </script>
+
+                            <script>
+                                function displayFilters() {
+                                    var categoryId = $("#prdt_category").val();
+
+                                    // Make an AJAX request to fetch filters based on the selected category
+                                    $.ajax({
+                                        url: siteUrl + "ProductController/product",
+                                        type: "GET",
+                                        data: { category: categoryId },
+                                        dataType: "json",
+                                        success: function (response) {
+                                            try {
+                                                // Log the response to inspect it
+                                                console.log("Response:", response);
+                                                // Check if the response is not empty and is an array
+                                                if (Array.isArray(response) && response.length > 0) {
+                                                    // Clear previous options in #filters-list and #filter_listvariables
+                                                    $("#filters-list").empty();
+                                                    $("#filter_listvariables").empty();
+                                                    // Loop through each filter in the response
+                                                    response.forEach(function (filter, index) {
+                                                        //alert(filter);
+
+                                                        var filterVariables = JSON.parse(filter.ec_filter_variables); // Parse JSON string to an array
+                                                        var filterFiltersObj = JSON.parse(filter.ec_filter_filters); // Parse JSON string to an object
+                                                        console.log("filterFiltersObj:", filterFiltersObj); // Log the object to inspect its structure
+                                                        // Check if filterFiltersObj is not undefined and has the "English" property
+                                                        console.log("English value:", filterFiltersObj.English); // Log the English property value using bracket notation
+                                                        //if (filterFiltersObj && filterFiltersObj["English"] !== undefined) {
+                                                        // Append checkbox for each filter with English value
+                                                        var jsonObject = JSON.parse(filterFiltersObj);
+
+                                                        $("#filters-list").append("<div><input type='checkbox' id='filter_title_" + index + "' name='filter_title' value= '" + jsonObject.English + "'> <label>" + jsonObject.English + "</label></div>");
+                                                        // }else {
+                                                        //     console.log("English property not found or undefined.");
+                                                        // }
+
+                                                        // Loop through each variable within the filterVariables array
+                                                        filterVariables.forEach(function (variable, varIndex) {
+                                                            var checkboxId = "filter_variable_" + index + "_" + varIndex;
+                                                            var variableValue = variable.variables;
+                                                            // Append checkbox for each variable
+                                                            $("#filter_listvariables").append("<div><input type='checkbox' id='" + checkboxId + "' name='filter_variable' value='" + variableValue + "'><label for='" + checkboxId + "'>" + variableValue + "</label></div>");
+                                                        });
+                                                    });
+                                                } else {
+                                                    // If no filters found, display a message
+                                                    $("#filters-list").html("<p>No filters found.</p>");
+                                                }
+                                                // Show the modal
+                                                var filterModal = new bootstrap.Modal($("#filtermodal"));
+                                                filterModal.show();
+                                            } catch (error) {
+                                                console.log("Error parsing JSON:", error);
+                                            }
+                                        },
+                                        error: function (xhr, status, error) {
+                                            // Handle error
+                                            console.log("Error:", error);
+                                        }
+                                    });
+                                }
+
+
+                            </script>
+
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Featured Image
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="file" name="ec_prdct_featured_img" placeholder="Featured Image"
+                                        class=" form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Multiple Image
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="file" name="ec_prdct_multiple_img[]" placeholder="Multiple Image"
+                                        class=" form-control" multiple required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Delivery Days
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="number" value="<?php echo $ec_prdct_delivery_days; ?>"
+                                        name="ec_prdct_delivery_days" placeholder="Delivery Days" class=" form-control"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Return Days
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="number" value="<?php echo $ec_prdct_return_days; ?>"
+                                        name="ec_prdct_return_days" placeholder="Return Days" class=" form-control"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Sku
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_sku; ?>" name="ec_prdct_sku"
+                                        placeholder="Sku" class=" form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Payment Method
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <select name="ec_prdct_payment_method" class="form-select"
+                                        aria-label="Default select example" required>
+                                        <option value="">Select Payment Method</option>
+                                        <?php
+                        $get_all_payment_method = get_all_payment_method();
+                        foreach ($get_all_payment_method as $key => $value) {
+                          if($ec_prdct_payment_method==$value['payment_method_id']){
+                            echo "<option value='".$value['payment_method_id']."' selected>".$value['payment_method_name']."</option>";
+                          }else{
+                            echo "<option value='".$value['payment_method_id']."'>".$value['payment_method_name']."</option>";
+                          }
+                        }
+                    ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Selling Price
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="number" value="<?php echo $ec_prdct_selling_price; ?>"
+                                        name="ec_prdct_selling_price" placeholder="Selling Price" class=" form-control"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Offer Price
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="number" value="<?php echo $ec_prdct_offer_price; ?>"
+                                        name="ec_prdct_offer_price" placeholder="Offer Price" class=" form-control"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Purchase Price
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="number" value="<?php echo $ec_prdct_purchase_price; ?>"
+                                        name="ec_prdct_purchase_price" placeholder="Purchase Price"
+                                        class=" form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Stock
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="number" value="<?php echo $ec_product_stock; ?>"
+                                        name="ec_product_stock" placeholder="Stock" class=" form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Stock Limit
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="number" value="<?php echo $ec_product_stock_limit; ?>"
+                                        name="ec_product_stock_limit" placeholder="Stock Limit" class=" form-control"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Delivered By
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_deliverdby; ?>"
+                                        name="ec_prdct_deliverdby" placeholder="Delivered By" class=" form-control"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Country
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_country; ?>" name="ec_prdct_country"
+                                        placeholder="Country" class=" form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Filters
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_filters; ?>" name="ec_prdct_filters"
+                                        placeholder="Filters" class=" form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Save For Later
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_save_later; ?>"
+                                        name="ec_prdct_save_later" placeholder="Save For Later" class=" form-control"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Draft Active
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_draft_active; ?>"
+                                        name="ec_prdct_draft_active" placeholder="Draft Active" class=" form-control"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Best Seller
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_best_seller; ?>"
+                                        name="ec_prdct_best_seller" placeholder="Best Seller" class=" form-control"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="row language-textbox " style=>
+                                <div class="col-3">
+                                    <label class="form-label ">Featured
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" value="<?php echo $ec_prdct_featured; ?>"
+                                        name="ec_prdct_featured" placeholder="Featured" class=" form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-8">
+                            <input type="hidden" value="<?php echo $ec_prdct_id; ?>" name="ec_prdct_id"
+                                class=" form-control">
+                        </div> -->
+                        <div class="card-footer text-end">
+                            <button type="submit" name="submit" class="btn btn-success">Update</button>
+                        </div>
+                </form>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+        integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="vendors/js/vendor.bundle.base.js"></script>
+    <script src="vendors/chart.js/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="js/dashboard.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var sidebarMenu = document.getElementById("sidebarMenu");
+            var navbarToggler = document.querySelector(".navbar-toggler");
+
+            navbarToggler.addEventListener("click", function () {
+                sidebarMenu.classList.toggle("active");
+            });
+        });
+    </script>
+</body>
+
+</html>

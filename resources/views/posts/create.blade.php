@@ -38,14 +38,15 @@
                         <input type="file" name="images[]" id="images" class="form-control" multiple>
                     </div>
                     @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul class="mb-0">
+                        <div class="mb-4 p-4 bg-red-100 text-red-700 rounded">
+                            <ul class="list-disc pl-5 space-y-1">
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
                                 @endforeach
                             </ul>
                         </div>
                     @endif
+
 
                     <div id="preview-container" class="d-flex flex-wrap mt-2"></div>
                     <button class="btn btn-success">Submit</button>

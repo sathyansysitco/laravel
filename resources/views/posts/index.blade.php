@@ -23,6 +23,16 @@
                         <button class="btn btn-outline-primary">Search</button>
                     </div>
                 </form>
+                <div id="skeleton-loader" class="mb-3" style="display: none;">
+                    @for ($i = 0; $i < 5; $i++)
+                        <div class="d-flex justify-content-between align-items-center p-2 border-bottom">
+                            <div class="skeleton w-25"></div>
+                            <div class="skeleton w-50"></div>
+                            <div class="skeleton w-25"></div>
+                        </div>
+                    @endfor
+                </div>
+
 
                 <div id="posts-data">
                     @include('posts.partials.table')
@@ -35,53 +45,61 @@
             </div>
         </div>
     </div>
-    <div id="loader" class="text-center my-3" style="display: none;">
-        <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
     @push('scripts')
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
-            let timer = null;
-            $('input[name="search"]').on('keyup', function() {
-                clearTimeout(timer);
-                const query = $(this).val();
+            $(document).ready(function() {
 
-                timer = setTimeout(() => {
-                    $('#loader').show(); // 👈 Show loader
+                let timer = null;
 
-                    $.ajax({
-                        url: "{{ route('posts.index') }}",
-                        method: 'GET',
-                        data: {
-                            search: query
-                        },
-                        success: function(response) {
-                            $('#posts-data').html(response);
-                        },
-                        complete: function() {
-                            $('#loader').hide(); // 👈 Hide loader after request completes
-                        }
-                    });
-                }, 300);
-            });
-        </script>
-        <script>
-            $('input[name="search"]').on('keyup', function() {
-                let query = $(this).val();
+                $('input[name="search"]').on('keyup', function() {
+                    clearTimeout(timer);
 
-                $.ajax({
-                    url: "{{ route('posts.index') }}",
-                    method: 'GET',
-                    data: {
-                        search: query
-                    },
-                    success: function(response) {
-                        $('#posts-data').html(response);
-                    }
+                    let query = $(this).val();
+
+                    timer = setTimeout(() => {
+                        $('#skeleton-loader').show();
+                        $('#posts-data').hide();
+
+                        $.ajax({
+                            url: "{{ route('posts.index') }}",
+                            method: 'GET',
+                            data: {
+                                search: query
+                            },
+                            success: function(response) {
+                                $('#posts-data').html(response);
+                            },
+                            complete: function() {
+                                $('#skeleton-loader').hide();
+                                $('#posts-data').show();
+                            }
+                        });
+                    }, 300);
                 });
             });
         </script>
     @endpush
+    @push('styles')
+        <style>
+            .skeleton {
+                height: 20px;
+                background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+                background-size: 200% 100%;
+                animation: shimmer 1.2s infinite linear;
+                border-radius: 4px;
+            }
+
+            @keyframes shimmer {
+                0% {
+                    background-position: -200% 0;
+                }
+
+                100% {
+                    background-position: 200% 0;
+                }
+            }
+        </style>
+    @endpush
+
 </x-app-layout>

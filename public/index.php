@@ -17,4 +17,7 @@ require __DIR__.'/../vendor/autoload.php';
 /** @var Application $app */
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
+
+// require __DIR__.'/../laravel/vendor/autoload.php';
+// $app = require_once __DIR__.'/../laravel/bootstrap/app.php';
 $app->handleRequest(Request::capture());

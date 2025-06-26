@@ -70,12 +70,8 @@ Route::middleware(['auth'])->group(function () {
 
     // ───── User Orders ─────
     Route::get('/my-orders', [OrderController::class, 'myOrders'])->name('orders.user');
-
-    
-});
-
 // ───── Admin Routes ─────
-    Route::middleware(['auth','admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
         // Admin Product CRUD
         Route::get('/products', [ProductController::class, 'index'])->name('products.index');
         Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
@@ -87,6 +83,13 @@ Route::middleware(['auth'])->group(function () {
         // Admin Orders List
         Route::get('/orders', [OrderController::class, 'index'])->name('orders');
     });
+    
+});
+
+
+Route::fallback(function () {
+    return 'Route not found - check if any route is pointing to an undefined class or controller.';
+});
 
 // ─────────────────────────────
 // Auth Routes (Login/Register)

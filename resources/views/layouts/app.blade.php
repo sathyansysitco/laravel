@@ -1,3 +1,4 @@
+@livewireStyles
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -43,8 +44,9 @@
                             <li><a href="{{ route('dashboard') }}" class="block hover:text-yellow-400">Dashboard</a>
                             </li>
                             <li><a href="{{ route('posts.index') }}" class="block hover:text-yellow-400">Posts</a></li>
-                            <li><a href="{{ route('posts.create') }}" class="block hover:text-yellow-400">Create
-                                    Post</a></li>
+                            {{-- <li><a href="{{ route('posts.create') }}" class="block hover:text-yellow-400">Create
+                                    Post</a></li> --}}
+                            <li><a href="products" class="block hover:text-yellow-400">Products</a></li>
                         </ul>
                     </aside>
 
@@ -66,3 +68,5 @@
 </body>
 
 </html>
+@livewireStyles
+

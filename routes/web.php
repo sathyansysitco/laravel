@@ -9,13 +9,32 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Models\Post;
+use App\Mail\OrderConfirmation;
+
 
 // ─────────────────────────────
 // Static Pages (Public)
 // ─────────────────────────────
-Route::view('/', 'welcome');
+// Route::view('/', 'welcome');
+Route::get('/', function () {
+        return view('products', ['products' => \App\Models\Product::all()]);
+    });
 Route::view('/about', 'about');
 Route::view('/map', 'map');
+
+// ───── Shop & Cart Routes ─────
+    Route::get('/products', function () {
+        return view('products', ['products' => \App\Models\Product::all()]);
+    });
+//     Route::get('/test-mail', function () {
+//     $order = \App\Models\Order::latest()->first(); // or dummy order
+//     Mail::to('sathyanand.sysitco@gmail.com')->send(new OrderConfirmation($order));
+//     return 'Mail sent!';
+// });
+Route::get('/test-mail', function () {
+    Mail::to('witane3994@boxmach.com')->send(new \App\Mail\TestEmail);
+    return 'Test email sent!';
+});
 
 // ─────────────────────────────
 // Authenticated Routes
@@ -42,6 +61,10 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard', compact('months', 'counts', 'postCount'));
     })->name('dashboard');
 
+
+    
+
+
     // ───── Profile Routes ─────
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -51,13 +74,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('posts', PostController::class);
     Route::get('/posts/search', [PostController::class, 'search'])->name('posts.search');
 
-    // ───── Shop & Cart Routes ─────
-    Route::get('/products', function () {
-        return view('products', ['products' => \App\Models\Product::all()]);
-    });
+    
 
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-    Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+    Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
     Route::post('/cart/increment', [CartController::class, 'increment'])->name('cart.increment');
     Route::post('/cart/decrement', [CartController::class, 'decrement'])->name('cart.decrement');
     Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');

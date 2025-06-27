@@ -41,7 +41,6 @@ class CheckoutController extends Controller
         foreach ($cart as $item) {
             $total += $item['price'] * $item['quantity'];
         }
-
         $order = Order::create([
             'name' => $request->name,
             'address' => $request->address,
